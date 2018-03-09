@@ -37,6 +37,9 @@ require_relative 'xdg/icon'
 class InvalidError < StandardError; end
 
 class AppStreamCollector
+  APPLICATION_TYPES = %w[desktop desktop-application console-application
+                         web-application]
+
   attr_reader :dir
   attr_reader :path
   attr_reader :project
@@ -109,6 +112,10 @@ class AppStreamCollector
   end
 
   def grab
+    unless APPLICATION_TYPES.include?(appdata.fetch('Type', 'generic'))
+      warn "#{appid} is not an application"
+      return false
+    end
     raise InvalidError, "no desktop file for #{appid}" unless desktop_file
     unless desktop_file.show_in?('KDE') && desktop_file.display? && !desktop_file.hidden?
       raise InvalidError, "desktop file for #{appid} not meant for display"
@@ -134,6 +141,10 @@ class AppStreamCollector
   end
 
   def self.grab(dir, project:)
+    # FIXME: the return value is no good. we need to differentiate:
+    #    found no appdata from no good appda from good appdata
+    #    former would need subsequent collectors run, latter simply means the
+    #    project contains nothing worthwhile
     any_good = false
     Dir.glob("#{dir}/**/**.appdata.xml").each do |path|
       warn "  Grabbing #{path}"

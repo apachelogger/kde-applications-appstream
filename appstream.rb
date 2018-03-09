@@ -95,7 +95,6 @@ projects.select! do |project|
   # knights (no CI and no icon in breeze)
   # konqueror (failed to find org.kde.konqueror.desktop in install tree)
   # kwave (no CI and desktop file build-time dependent)
-  # marble (org.kde.plasma.worldclock desktop file not found, probably wrong type desktop)
   # smb4k (no CI and no icon in breeze)
   # symboleditor (broken screenshots)
   # umbrello (broken id mapping)
@@ -192,13 +191,9 @@ projects = Concurrent::Array.new(projects) # make thread-safe
 # TODO list of not processed items:
 # kactivitymanagerd no appdata
 # kde-gtk-config no appdata
-# kdeplasma-addons failed to map org.kde.hunyango.desktop (maybe wrong type desktop?)
 # khotkeys no appdata
 # kmenuedit no appdata
 # ksysguard no appdata
-# plasma-desktop failed to map org.kde.plasma.trash (maybe wrong type desktop?)
-# plasma-nm failed to map org.kde.plasma.networkmanagement (maybe wrong type desktop?)
-# plasma-vault failed to map org.kde.plasma.vault (maybe wrong type desktop?)
 # sddm-kcm no appdata
 # user-manager no appdata
 
