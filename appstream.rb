@@ -162,8 +162,6 @@ projects.select! do |project|
     next false
   end
 
-  # FIXME: did all games get skipped? they all showed up missing until run manually (a lot of them seem to have hicolor icons tho)
-  # FIXME: ark exclusion way too generic
   # TODO: compile list of apps with hicolor only icons and tell andreask
 
   next if %w[simon signon-kwallet-extension kdev-control-flow].any? { |x| project.end_with?(x) }
