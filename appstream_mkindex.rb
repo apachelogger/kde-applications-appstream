@@ -26,6 +26,7 @@ appdata_dir = '../appdata'
 
 index ||= {}
 Dir.glob("#{appdata_dir}/*.json") do |file|
+  next if File.symlink?(file) # Don't include compat symlinks in index.
   data = JSON.parse(File.read(file))
   next unless data['Categories'] # not appdata
   id = data.fetch('ID')
