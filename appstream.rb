@@ -88,7 +88,6 @@ projects.select! do |project|
   # next true if File.basename(project) == 'plasma-workspace'
 
   # TODO: broken crawl in some capacity:
-  # flow (calligra)
   # kexi (no CI and failed to find desktop file in git)
   # kaudiocreator (no CI and no icon in breeze)
   # kcachegrind (no CI and no icon in breeze)
@@ -98,7 +97,6 @@ projects.select! do |project|
   # smb4k (no CI and no icon in breeze)
   # symboleditor (broken screenshots)
   # umbrello (broken id mapping)
-  # zanshin (broken screenshot)
   # kxstitch (no CI and no icon in breeze)
   # kio-gdrive can't find desktop file maybe wrong type desktop)
 
@@ -148,10 +146,6 @@ projects.select! do |project|
   # ksig
   # kuiviewer
   # kwlan
-  # plan (calligra?)
-  # sheets (calligra?)
-  # stage ( calligra?)
-  # words (calligra?)
 
   # TODO: playground but was on apps list:
   # kdiff3
@@ -164,8 +158,6 @@ projects.select! do |project|
   # TODO: compile list of apps with hicolor only icons and tell andreask
 
   next if %w[simon signon-kwallet-extension kdev-control-flow].any? { |x| project.end_with?(x) }
-  # https://bugs.kde.org/show_bug.cgi?id=391524
-  next if project.end_with?('zanshin')
   # https://bugs.kde.org/show_bug.cgi?id=391526
   next if project.end_with?('kamoso')
   # https://bugs.kde.org/show_bug.cgi?id=391528
@@ -174,7 +166,7 @@ projects.select! do |project|
   next if project.end_with?('apper')
   # https://bugs.kde.org/show_bug.cgi?id=391555
   next if project.end_with?('kimtoy')
-  # No buzilla product. KIO slave incorrectly marked desktop.
+  # https://phabricator.kde.org/D11187
   next if project.end_with?('kio-stash')
   # No CI and in-git desktop file is .desktop.in. Can't crawl this
   next if project.end_with?('kwave')
@@ -182,8 +174,9 @@ projects.select! do |project|
   next if project.end_with?('umbrello')
   # No CI and in-git desktop file is .desktop.cmake. Can't crawl This
   next if project.end_with?('ark')
-  # TODO
+  # https://phabricator.kde.org/D11186
   next if project.end_with?('kio-gdrive')
+  # FIXME: there is a special exclude in the crawler's grab for calligragemini
   true
 end
 projects = Concurrent::Array.new(projects) # make thread-safe
