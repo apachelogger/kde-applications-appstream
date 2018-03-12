@@ -161,8 +161,6 @@ projects.select! do |project|
   next if project.end_with?('umbrello')
   # No CI and in-git desktop file is .desktop.cmake. Can't crawl This
   next if project.end_with?('ark')
-  # https://phabricator.kde.org/D11186
-  next if project.end_with?('kio-gdrive')
   # No Ci and in-git desktop file is .desktop.cmake. Can't crawl this.
   next if project.end_with?('kexi')
   # FIXME: zanshin's renku app is overridden in collector D11264
