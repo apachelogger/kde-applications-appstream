@@ -174,7 +174,6 @@ projects.select! do |project|
   next if project.end_with?('ark')
   # https://phabricator.kde.org/D11186
   next if project.end_with?('kio-gdrive')
-  # FIXME: there is a special exclude in the crawler's grab for calligragemini
   true
 end
 projects = Concurrent::Array.new(projects) # make thread-safe

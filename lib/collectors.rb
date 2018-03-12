@@ -148,9 +148,6 @@ class AppStreamCollector
     any_good = false
     Dir.glob("#{dir}/**/**.appdata.xml").each do |path|
       warn "  Grabbing #{path}"
-      # FIXME: broken blocking all of calligra
-      # # https://bugs.kde.org/show_bug.cgi?id=388687
-      next if path.include?('org.kde.calligragemini')
       begin
         good = new(dir, path: path, project: project).grab
         any_good ||= good
