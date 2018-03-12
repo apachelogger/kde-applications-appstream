@@ -59,9 +59,14 @@ class AppStreamCollector
     # The value in the appdata must stay as it is or appstream:// urls do not
     # work!
     @appid = appdata['ID'].gsub('.desktop', '')
-    # Mutate in the raw data as well. This way subsequent tooling can expecting
-    # the id to be standardized.
-    appdata['ID'] = @appid
+    # WARNING do not mutate ID in appdata!
+    # libappstream is too daft to handle foo.desktop and foo the same, so for
+    # external purposes we need to keep the input ID. This is particularly
+    # important as to not break expectations when handling our data blobs e.g.
+    # to build appstream:// URIs in the frontend code.
+    # Instead we'll pack our mutated id into a special key we can later use
+    # to also uniquely identify things in the frontend.
+    appdata['X-KDE-ID'] = @appid
   end
 
   def xdg_data_dir

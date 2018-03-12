@@ -101,7 +101,7 @@ class Thumbnailer
     return unless appdata['Screenshots'] && !appdata['Screenshots'].empty?
     appdata.fetch('Screenshots').each do |screenshot|
       next if screenshot.fetch('source-image').fetch('lang') != 'C'
-      thumb = Thumbnail.new(appid: appdata.fetch('ID'),
+      thumb = Thumbnail.new(appid: appdata.fetch('X-KDE-ID'),
                             url: screenshot.fetch('source-image').fetch('url'))
       thumb.generate
       # FIXME: maybe should only set to name of file and resolve in php?

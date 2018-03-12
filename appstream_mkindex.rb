@@ -29,7 +29,7 @@ Dir.glob("#{appdata_dir}/*.json") do |file|
   next if File.symlink?(file) # Don't include compat symlinks in index.
   data = JSON.parse(File.read(file))
   next unless data['Categories'] # not appdata
-  id = data.fetch('ID')
+  id = data.fetch('X-KDE-ID')
   data.fetch('Categories').uniq.each do |category|
     # NB: category is the Name value. Should l10n for categoresi get implemented
     #   this maybe need rethinking as mapping by name is somewhat fragile.
