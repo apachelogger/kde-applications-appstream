@@ -166,7 +166,7 @@ projects.select! do |project|
   next if project.end_with?('kimtoy')
   # https://phabricator.kde.org/D11187
   next if project.end_with?('kio-stash')
-  # No CI and in-git desktop file is .desktop.in. Can't crawl this
+  # No CI and in-git desktop file is .desktop.in. Can't crawl this.
   next if project.end_with?('kwave')
   # https://bugs.kde.org/show_bug.cgi?id=391559
   next if project.end_with?('umbrello')
@@ -174,6 +174,8 @@ projects.select! do |project|
   next if project.end_with?('ark')
   # https://phabricator.kde.org/D11186
   next if project.end_with?('kio-gdrive')
+  # No Ci and in-git desktop file is .desktop.cmake. Can't crawl this.
+  next if project.end_with?('kexi')
   true
 end
 projects = Concurrent::Array.new(projects) # make thread-safe
