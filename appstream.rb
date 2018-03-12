@@ -122,30 +122,19 @@ projects.select! do |project|
   # ksystemlog
   # kwalletmanager
   # rsibreak
+  # kdf (previously known as kdisfree)
 
   # TODO: unmaintained but on old apps list:
   # blogilo
 
   # TODO: missing?
-  # kappfinder (seems to have disappeared entirely)
-  # kdiskfree (seems to not exist)
-  # keurocalc (seem to not exist)
   # kfilereplace
-  # kftpgrabber
-  # kioskadmintool
   # klinkstatus
-  # kmid
-  # kmldonkey
-  # knode
   # kommander
   # kpager
   # kpatience
   # kppp
   # kremotecontrol
-  # ksame
-  # ksig
-  # kuiviewer
-  # kwlan
 
   # TODO: playground but was on apps list:
   # kdiff3
