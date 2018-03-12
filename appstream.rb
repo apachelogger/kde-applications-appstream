@@ -158,8 +158,6 @@ projects.select! do |project|
   # TODO: compile list of apps with hicolor only icons and tell andreask
 
   next if %w[simon signon-kwallet-extension kdev-control-flow].any? { |x| project.end_with?(x) }
-  # https://bugs.kde.org/show_bug.cgi?id=391526
-  next if project.end_with?('kamoso')
   # https://bugs.kde.org/show_bug.cgi?id=391528
   next if project.end_with?('heaptrack')
   # https://bugs.kde.org/show_bug.cgi?id=391554
