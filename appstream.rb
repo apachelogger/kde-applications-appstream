@@ -176,6 +176,7 @@ projects.select! do |project|
   next if project.end_with?('kio-gdrive')
   # No Ci and in-git desktop file is .desktop.cmake. Can't crawl this.
   next if project.end_with?('kexi')
+  # FIXME: zanshin's renku app is overridden in collector D11264
   true
 end
 projects = Concurrent::Array.new(projects) # make thread-safe

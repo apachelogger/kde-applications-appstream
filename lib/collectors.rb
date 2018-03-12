@@ -153,6 +153,8 @@ class AppStreamCollector
     any_good = false
     Dir.glob("#{dir}/**/**.appdata.xml").each do |path|
       warn "  Grabbing #{path}"
+      # FIXME: broken screenshot blocking zanshin (renku is in same repo)
+      next if path.include?('renku')
       begin
         good = new(dir, path: path, project: project).grab
         any_good ||= good
